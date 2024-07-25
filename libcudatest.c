@@ -46,6 +46,7 @@ VkPhysicalDevice CompatibleDevice(VkInstance instance, const char **enabledExts,
 			vkEnumerateDeviceExtensionProperties(devices[i], NULL, &extsCount, exts);
 			for(j = 0; j < enabledExtsCount; j++)
 				if(!isExtensionSupported(exts, extsCount, enabledExts[j])) break;
+			free(exts);
 			if(j == enabledExtsCount) {
 				r = devices[i];
 				break;
